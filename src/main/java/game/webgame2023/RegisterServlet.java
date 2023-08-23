@@ -20,7 +20,11 @@ public class RegisterServlet extends HttpServlet {
         String name = req.getParameter("name");
 
         //Устанавливаем новое значение имени
-        session.setAttribute("playerName", name);
+        if (name == null || "".equals(name)) {
+            session.setAttribute("playerName", "Совсем забыл свое имя");
+        } else {
+            session.setAttribute("playerName", name);
+        }
 
         //Редирект на основную страницу
         getServletContext().getRequestDispatcher("/mainPage.jsp").forward(req, resp);

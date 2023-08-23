@@ -26,7 +26,11 @@
     </fieldset>
 </form>
 </p>
-<%="Имя игрока: " + session.getAttribute("playerName")%>
-<%="Попытка №" + session.getAttribute("attempts")%>
+<p>
+    <%="Имя игрока: " + session.getAttribute("playerName")%>
+</p>
+<p>
+    <%="Попытка №" + session.getAttribute("attempts")%>
+</p>
 </body>
 </html>

@@ -11,9 +11,14 @@
     <title>Chill</title>
 </head>
 <body>
-<h1>Yeah, chill</h1>
+<h1>Можно расслабиться</h1>
 <p>
-  <img src="rsc/chill.jpg" height="500" width="500">
+  <img src="rsc/chill.jpg" height="600" width="750">
+</p>
+<p>
+<form action="<%=request.getContextPath()%>/restart" method="get">
+    <button type="submit" name="restart">Еще раз?</button>
+</form>
 </p>
 </body>
 </html>

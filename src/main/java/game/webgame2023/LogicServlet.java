@@ -31,32 +31,37 @@ public class LogicServlet extends HttpServlet {
         String choice = request.getParameter("choice");
 
         //Смена текста в зависимости от ответа
-        switch (choice) {
-            case "Спрятаться под столом":
-                session.setAttribute("event", events.get(0));
-                session.setAttribute("choiceOne", events.get(3));
-                session.setAttribute("choiceTwo", events.get(3));
-                getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
-                break;
-            case "Выйти":
-            case "Идти":
-                getServletContext().getRequestDispatcher("/failPage.jsp").forward(request, response);
-                break;
-            case "Уйти через дверь":
-                session.setAttribute("event", events.get(1));
-                session.setAttribute("choiceOne", events.get(4));
-                session.setAttribute("choiceTwo", events.get(5));
-                getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
-                break;
-            case "Взлететь":
-                session.setAttribute("event", events.get(2));
-                session.setAttribute("choiceOne", events.get(6));
-                session.setAttribute("choiceTwo", events.get(6));
-                getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
-                break;
-            case "Отдохнуть":
-                getServletContext().getRequestDispatcher("/goodEnd.jsp").forward(request,response);
+        if (choice != null) {
+            switch (choice) {
+                case "Спрятаться под столом":
+                    session.setAttribute("event", events.get(0));
+                    session.setAttribute("choiceOne", events.get(3));
+                    session.setAttribute("choiceTwo", events.get(3));
+                    getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
+                    break;
+                case "Выйти":
+                case "Идти":
+                    getServletContext().getRequestDispatcher("/failPage.jsp").forward(request, response);
+                    break;
+                case "Уйти через дверь":
+                    session.setAttribute("event", events.get(1));
+                    session.setAttribute("choiceOne", events.get(4));
+                    session.setAttribute("choiceTwo", events.get(5));
+                    getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
+                    break;
+                case "Взлететь":
+                    session.setAttribute("event", events.get(2));
+                    session.setAttribute("choiceOne", events.get(6));
+                    session.setAttribute("choiceTwo", events.get(6));
+                    getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
+                    break;
+                case "Отдохнуть":
+                    getServletContext().getRequestDispatcher("/goodEnd.jsp").forward(request,response);
+            }
+            response.sendRedirect("/mainPage.jsp");
+        } else {
+            getServletContext().getRequestDispatcher("/mainPage.jsp").forward(request, response);
+            response.sendRedirect("/mainPage.jsp");
         }
-        response.sendRedirect("/mainPage.jsp");
     }
 }
